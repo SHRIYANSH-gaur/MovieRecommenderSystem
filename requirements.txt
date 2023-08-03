@@ -3,4 +3,5 @@ gunicorn
 numpy 
 pandas
 pipreqs
+streamlit
 scikit-learn
