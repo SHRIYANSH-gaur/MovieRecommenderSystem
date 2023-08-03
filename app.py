@@ -1,3 +1,4 @@
+import streamlit as st
 import flask
 import numpy as np
 import pandas as pd
@@ -7,6 +8,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 app = flask.Flask(__name__, template_folder='templates')
+
+
+@app.route('/streamlit')
+def streamlit():
+  st.set_page_config(page_title="Movie-Club")
+  st.write("movie-club")
 
 movies_data = pd.read_csv('movies.csv')
 selected_features = ['genres','keywords','tagline','cast','director','vote_average','popularity']
@@ -25,6 +32,7 @@ list_of_all_titles = movies_data['title'].tolist()
 
 # Set up the main route
 @app.route('/', methods=['GET', 'POST'])
+
 
 def main():
     if flask.request.method == 'GET':
